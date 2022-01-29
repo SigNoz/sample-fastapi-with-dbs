@@ -43,9 +43,9 @@ async def read_root():
     s1=models.Student(studentid='A001', name='Tara', age=20)
     s1.save()
 
-    # r = redislite.Redis()
-    # r.set('foo', 'bar')
-    # r.get('foo')
+    r = redislite.StrictRedis()
+    r.set('foo', 'bar')
+    r.get('foo')
 
     return {"Hello": "World"}
 
