@@ -11,6 +11,8 @@ Download MongoDB for:
 - Linux from https://docs.mongodb.com/manual/administration/install-on-linux/
 - Ubuntu from https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
+### Set up instructions
+
 ```
 pip3 install -r requirements.txt
 ```
@@ -18,6 +20,8 @@ pip3 install -r requirements.txt
 ```
 opentelemetry-bootstrap --action=install
 ```
+
+### Run the sample app
 
 ```
 OTEL_METRICS_EXPORTER=none OTEL_RESOURCE_ATTRIBUTES=service.name=fastAPI OTEL_EXPORTER_OTLP_ENDPOINT="http://<IP of SigNoz>:4317" opentelemetry-instrument uvicorn app.main:app --port 5001 --host 0.0.0.0
