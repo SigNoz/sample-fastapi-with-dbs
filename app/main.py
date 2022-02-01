@@ -12,8 +12,8 @@ random.seed(54321)
 
 
 app = FastAPI()
+r = redis.Redis()
 mongoConnection = None
-redisConnection = None
 
 DATABASE_NAME = "testDB"
 DATABASE_URL = None
@@ -46,7 +46,6 @@ async def read_root():
     s1=models.Student(studentid='A001', name='Tara', age=20)
     s1.save()
 
-    r = redis.Redis()
     r.set('foo', 'bar')
     r.get('foo')
 
