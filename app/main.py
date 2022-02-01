@@ -1,8 +1,9 @@
 import os, asyncio
 from fastapi import FastAPI
+from grpc import StatusCode
 import requests
 from mongoengine import connect, disconnect
-import redislite
+import redis
 import models
 
 
@@ -16,6 +17,8 @@ redisConnection = None
 
 DATABASE_NAME = "testDB"
 DATABASE_URL = None
+
+SLEEP_DURATION_SECONDS = 5e-3
 
 def createDatabaseUrl():
     global DATABASE_URL
@@ -43,7 +46,7 @@ async def read_root():
     s1=models.Student(studentid='A001', name='Tara', age=20)
     s1.save()
 
-    r = redislite.StrictRedis()
+    r = redis.Redis()
     r.set('foo', 'bar')
     r.get('foo')
 
@@ -59,7 +62,7 @@ async def health_check():
 async def read_item(item_id: int, q: str = None):
     if item_id % 2 == 0:
         # mock io - wait for x seconds
-        seconds = random.uniform(0, 3)
+        seconds = random.uniform(0, SLEEP_DURATION_SECONDS)
         await asyncio.sleep(seconds)
     return {"item_id": item_id, "q": q}
 
@@ -71,9 +74,11 @@ async def invalid():
 
 @app.get("/external-api")
 def external_api():
-    seconds = random.uniform(0, 3)
+    seconds = random.uniform(0, SLEEP_DURATION_SECONDS)
+    print(seconds)
     response = requests.get(f"https://httpbin.org/delay/{seconds}")
+    statusCode = response.status_code
     response.close()
-    return "ok"
+    return statusCode
 
 
