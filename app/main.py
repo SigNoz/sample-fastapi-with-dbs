@@ -29,6 +29,7 @@ def createDatabaseUrl():
     db_url = "mongodb://{}:27017/{}".format(db_host, DATABASE_NAME)
     print("Connecting to DB: ", db_url)
     DATABASE_URL = db_url
+    return db_url
 
 @app.on_event("startup")
 async def create_db_client():

@@ -6,18 +6,20 @@ services:
       ports:
       - "5000:5000"
       environment:
-      - REDIS_HOST=redisi
+      - REDIS_HOST=redis
       - MONGO_HOST=mongo
       - OTEL_METRICS_EXPORTER=none
       - OTEL_RESOURCE_ATTRIBUTES=service.name=fastAPI3
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://stagingapp.signoz.io:4317
-
+      depends_on:
+      - mongo
+      - redis
   mongo:
-    image: mongo:latest
+    image: mongo
     ports:
     - 27017
   redis:
-    image: redis:latest
+    image: redis
     ports:
     - 6379
     
