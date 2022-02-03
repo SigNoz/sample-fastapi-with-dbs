@@ -1,16 +1,14 @@
-FROM tiangolo/uvicorn-gunicorn:python3.7
+FROM python:3.8
 
 # open port
 EXPOSE 5000
 
 # add requirements
-COPY ./app/requirements.txt /app/requirements.txt
+COPY . /
 
 # install requirements
-RUN pip install -r /app/requirements.txt
-
-# copy source code
-COPY ./app /app/app
+RUN pip install -r /requirements.txt
+RUN opentelemetry-bootstrap --action=install
 
 # Init command
-CMD ["opentelemetry-instrument", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]
+CMD ["opentelemetry-instrument", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000", "--host", "0.0.0.0"]
