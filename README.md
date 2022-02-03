@@ -1,6 +1,6 @@
 # sample-fastapi-with-dbs
 
-### Simple Fast API app with MongoDB and Redislite
+### Simple Fast API app with MongoDB and Redis
 
 To show how you can see metrics for External calls and DB calls in FastAPI app, we have created a sample app which uses a database (MongoDB) so that the example is more realistic
 
