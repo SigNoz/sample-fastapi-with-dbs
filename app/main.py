@@ -12,7 +12,10 @@ random.seed(54321)
 
 
 app = FastAPI()
-r = redis.Redis()
+
+redis_host = os.getenv('REDIS_HOST', "localhost")
+r = redis.Redis(host=redis_host, port=6379)
+
 mongoConnection = None
 
 DATABASE_NAME = "testDB"
@@ -22,7 +25,7 @@ SLEEP_DURATION_SECONDS = 5e-3
 
 def createDatabaseUrl():
     global DATABASE_URL
-    db_host = os.getenv('DB_HOST', "127.0.0.1")
+    db_host = os.getenv('MONGO_HOST', "127.0.0.1")
     db_url = "mongodb://{}:27017/{}".format(db_host, DATABASE_NAME)
     print("Connecting to DB: ", db_url)
     DATABASE_URL = db_url
