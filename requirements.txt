@@ -2,7 +2,7 @@ fastapi==0.68.1
 python-dotenv==0.19.0
 uvicorn==0.15.0
 mongoengine==0.23.1
-redislite==6.0.674960
+redis
 requests
 opentelemetry-distro==0.28b0
 opentelemetry-instrumentation==0.28b0
