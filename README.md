@@ -6,6 +6,12 @@
 To show how you can see metrics for External calls and DB calls in FastAPI app, we have created a sample app which uses a database (MongoDB) so that the example is more realistic
 
 ## Run using docker-compose
+- Git clone this repo
+```
+
+git clone https://github.com/SigNoz/sample-fastapi-with-dbs.git
+
+```
 Change `OTEL_EXPORTER_OTLP_ENDPOINT` env variable in [docker-compose.yaml](https://github.com/SigNoz/sample-fastapi-with-dbs/blob/main/docker-compose.yaml#L13) file to send data to SigNoz.
 ```
 - OTEL_EXPORTER_OTLP_ENDPOINT=<IP of SigNoz>:4317
