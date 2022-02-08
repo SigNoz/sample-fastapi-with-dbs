@@ -25,6 +25,13 @@ docker-compose up -d
 
 Application would be available at [http://localhost:5000/](http://localhost:5000/). Browse and generate some data.
 
+Or just run the following command from the terminal of your VM a few times to make some API calls to the sample app. This should return `Hello World` 
+
+
+```
+ curl http://localhost:5000  
+```
+
 ## Run sample app without docker
 
 #### Install Mongo
