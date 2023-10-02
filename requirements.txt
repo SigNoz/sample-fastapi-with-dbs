@@ -5,6 +5,6 @@ mongoengine==0.23.1
 redis
 requests
 opentelemetry-distro==0.28b0
-opentelemetry-instrumentation==0.28b0
+opentelemetry-instrumentation==0.41b0
 opentelemetry-exporter-otlp==1.9.0
 opentelemetry-api==1.9.0
